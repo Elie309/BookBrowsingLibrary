@@ -2,3 +2,5 @@ src/
 tsconfig.json
 node_modules/
 .github/
+package-lock.json
+dist/node_modules/

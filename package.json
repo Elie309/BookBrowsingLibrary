@@ -10,6 +10,11 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
