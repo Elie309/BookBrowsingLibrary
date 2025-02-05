@@ -2,7 +2,7 @@
   "name": "@elie309/bookbrowsinglibrary",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "lint": "eslint src --ext .ts"
@@ -21,7 +21,6 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
-    "@elie309/bookbrowsinglibrary": "file:",
-    "bookbrowsinglibrary": "file:"
+    "@elie309/bookbrowsinglibrary": "file:"
   }
 }
