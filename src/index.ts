@@ -5,5 +5,3 @@ import { Author } from './entities/Author';
 
 export { BookService, AuthorServices, Book, Author };
 
-
-
