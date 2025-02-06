@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsup src --format esm,cjs --dts",
+    "build": "tsup src --config tsconfig.json --dts",
     "lint": "eslint src",
     "test": "jest"
   },
