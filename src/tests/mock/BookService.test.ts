@@ -1,6 +1,6 @@
-import { BookService } from '../../services/BookService';
+import BookService from '../../services/BookService';
 import axiosInstance from '../../utils/axiosInstance';
-import { Book } from '../../entities/Book';
+import Book from '../../entities/Book';
 
 jest.mock('../../utils/axiosInstance');
 
