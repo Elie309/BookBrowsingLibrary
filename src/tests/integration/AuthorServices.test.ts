@@ -1,5 +1,5 @@
-import AuthorServices from '../../services/AuthorServices';
-import  Author  from '../../entities/Author';
+import {AuthorServices} from '../../services/AuthorServices';
+import  {Author}  from '../../entities/Author';
 
 describe('AuthorsServices Integration Test', () => {
     it('should fetch authors based on query', async () => {

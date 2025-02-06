@@ -1,7 +1,7 @@
 /**
  * Represents an author with various attributes.
  */
-export default class Author {
+export class Author {
     id: string;
     name: string;
     birthDate?: string;

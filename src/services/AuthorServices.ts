@@ -1,10 +1,10 @@
 import axiosInstance from '../utils/axiosInstance';
-import Author from '../entities/Author';
+import {Author} from '../entities/Author';
 
 /**
  * Service for fetching author data from an external API.
  */
-export default class AuthorServices {
+export class AuthorServices {
     /**
      * Fetches authors based on the search query with paging and sorting.
      * 

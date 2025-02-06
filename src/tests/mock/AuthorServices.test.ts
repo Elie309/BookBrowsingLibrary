@@ -1,6 +1,6 @@
-import AuthorServices from '../../services/AuthorServices';
+import {AuthorServices} from '../../services/AuthorServices';
 import axiosInstance from '../../utils/axiosInstance';
-import Authors from '../../entities/Author';
+import {Author} from '../../entities/Author';
 
 jest.mock('../../utils/axiosInstance');
 
@@ -18,8 +18,8 @@ describe('AuthorsServices', () => {
 
         const authors = await new AuthorServices().fetchAuthors('test');
         expect(authors).toEqual([
-            Authors.fromJson(mockResponse.data.docs[0]),
-            Authors.fromJson(mockResponse.data.docs[1])
+            Author.fromJson(mockResponse.data.docs[0]),
+            Author.fromJson(mockResponse.data.docs[1])
         ]);
     });
 
@@ -35,7 +35,7 @@ describe('AuthorsServices', () => {
 
         const authors = await new AuthorServices().fetchAuthors('test', 2, 1);
         expect(authors).toEqual([
-            Authors.fromJson(mockResponse.data.docs[0])
+            Author.fromJson(mockResponse.data.docs[0])
         ]);
     });
 
@@ -50,13 +50,12 @@ describe('AuthorsServices', () => {
                 bio: 'Joanne "Jo" Murray, OBE (née Rowling), better known under the pen name J. K. Rowling...',
                 links: [{ title: 'Official Site', url: 'http://www.jkrowling.com/' }],
                 photos: [5543033, -1],
-                remote_ids: { viaf: '116796842', goodreads: '1077326' },
                 created: { type: '/type/datetime', value: '2008-04-01T03:28:50.625462' }
             }
         };
         (axiosInstance.get as jest.Mock).mockResolvedValue(mockResponse);
 
         const author = await new AuthorServices().fetchAuthorDetail('OL23919A');
-        expect(author).toEqual(Authors.fromDetailsJson(mockResponse.data));
+        expect(author).toEqual(Author.fromDetailsJson(mockResponse.data));
     });
 });

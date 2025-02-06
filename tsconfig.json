@@ -6,13 +6,15 @@
         "moduleResolution": "Node",
         "target": "ES6",
         "rootDir": "src",
-        "allowJs": true
+        "allowJs": true,
+        "esModuleInterop": true,
     },
-    "include": [
-        "src/**/*.ts"
-    ],
     "exclude": [
         "src/**/*.test.ts",
         "src/tests/**/*.ts"
-    ]
+    ],
+    "include": [
+        "src/**/*.ts"
+    ],
+    
 }

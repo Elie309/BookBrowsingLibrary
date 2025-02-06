@@ -1,7 +1,7 @@
 /**
  * Represents a book with various attributes.
  */
-export default class Book {
+export class Book {
     id: string;
     title: string;
     cover: string;
@@ -52,7 +52,7 @@ export default class Book {
      */
     static fromSearchJson(json: any): Book {
         return new Book(
-            json.key,
+            json.key.split('/').pop(),
             json.title,
             json.cover_i ? `https://covers.openlibrary.org/b/id/${json.cover_i}-L.jpg` : '',
             json.author_name || [],

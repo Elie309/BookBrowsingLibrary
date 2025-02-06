@@ -1,5 +1,5 @@
-import BookService from '../../services/BookService';
-import Book from '../../entities/Book';
+import {BookService} from '../../services/BookService';
+import {Book} from '../../entities/Book';
 
 describe('BookService Integration Test', () => {
     it('should fetch books based on query', async () => {
