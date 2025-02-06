@@ -9,6 +9,10 @@
         "strict": true
     },
     "include": [
-        "src"
-, "src/tests/mock/BookService.test.ts"    ]
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "src/**/*.test.ts",
+        "src/tests/**/*.ts"
+    ]
 }
