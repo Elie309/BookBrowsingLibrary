@@ -1,10 +1,10 @@
 import axiosInstance from '../utils/axiosInstance';
-import { Authors } from '../entities/Authors';
+import Author from '../entities/Author';
 
 /**
  * Service for fetching author data from an external API.
  */
-export class AuthorsServices {
+export default class AuthorsServices {
     /**
      * Fetches authors based on the search query with paging and sorting.
      * 
@@ -15,7 +15,7 @@ export class AuthorsServices {
      * @returns A promise that resolves to an array of Authors objects.
      */
     async fetchAuthors(query: string, page: number = 1, limit: number = 10, 
-        sortBy?: 'name' | 'birth_date' ): Promise<Authors[]> {
+        sortBy?: 'name' | 'birth_date' ): Promise<Author[]> {
 
         const offset = (page - 1) * limit;
         const response = await axiosInstance.get(`/search/authors.json`, {
@@ -27,7 +27,7 @@ export class AuthorsServices {
             }
         });
         const data = response.data;
-        let authors = data.docs.map((author: any) => Authors.fromJson(author));
+        let authors = data.docs.map((author: any) => Author.fromJson(author));
                 
         return authors;
     }
@@ -38,10 +38,10 @@ export class AuthorsServices {
      * @param key - The key of the author.
      * @returns A promise that resolves to an Authors object.
      */
-    async fetchAuthorDetail(key: string): Promise<Authors | null> {
+    async fetchAuthorDetail(key: string): Promise<Author | null> {
         try {
             const response = await axiosInstance.get(`/authors/${key}.json`);
-            return Authors.fromDetailsJson(response.data);
+            return Author.fromDetailsJson(response.data);
         } catch (error) {
             return null;
         }

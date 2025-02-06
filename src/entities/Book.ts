@@ -1,7 +1,7 @@
 /**
  * Represents a book with various attributes.
  */
-export class Book {
+export default class Book {
     id: string;
     title: string;
     cover: string;

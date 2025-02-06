@@ -1,7 +1,7 @@
 /**
  * Represents an author with various attributes.
  */
-export class Authors {
+export default class Author {
     id: string;
     name: string;
     birthDate?: string;
@@ -56,8 +56,8 @@ export class Authors {
      * @param json - The JSON object containing author data.
      * @returns A new Authors instance.
      */
-    static fromJson(json: any): Authors {
-        return new Authors(
+    static fromJson(json: any): Author {
+        return new Author(
             json.key,
             json.name,
             json.top_work,
@@ -75,8 +75,8 @@ export class Authors {
      * @param json - The JSON object containing detailed author data.
      * @returns A new Authors instance.
      */
-    static fromDetailsJson(json: any): Authors {
-        const author = new Authors(
+    static fromDetailsJson(json: any): Author {
+        const author = new Author(
             json.key.split('/').pop(),
             json.name,
             json.title,

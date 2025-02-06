@@ -1,10 +1,10 @@
 import axiosInstance from '../utils/axiosInstance';
-import { Book } from '../entities/Book';
+import  Book from '../entities/Book';
 
 /**
  * Service for fetching book data from an external API.
  */
-export class BookService {
+export default class BookService {
 
     /**
      * Fetches books based on the search query, page number, limit, and optional sorting.
