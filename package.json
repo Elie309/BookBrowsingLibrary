@@ -8,7 +8,7 @@
     "build": "rm -rf dist && tsup src --config tsconfig.json --dts",
     "lint": "eslint src",
     "test": "jest",
-    "publish": "npm run build && npm publish --access public"
+    "public": "npm run build && npm publish --access public"
   },
   "exports": {
     ".": "./dist/index.js"
