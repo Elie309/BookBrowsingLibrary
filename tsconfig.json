@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "module": "CommonJS", // or "ESNext" if using ES modules
+        "module": "ESNext", // or "ESNext" if using ES modules
         "moduleResolution": "Node",
         "target": "ES6",
         "declaration": true,
@@ -14,5 +14,5 @@
     ],
     "include": [
         "src/**/*.ts"
-    ],
+    ]
 }
