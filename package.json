@@ -4,8 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts",
-    "lint": "eslint src --ext .ts",
+    "build": "tsup src --format esm,cjs --dts",
+    "lint": "eslint src",
     "test": "jest"
   },
   "publishConfig": {
