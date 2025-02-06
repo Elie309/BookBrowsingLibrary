@@ -1,4 +1,4 @@
-import AuthorsServices from '../../services/AuthorsServices';
+import AuthorServices from '../../services/AuthorServices';
 import axiosInstance from '../../utils/axiosInstance';
 import Authors from '../../entities/Author';
 
@@ -16,7 +16,7 @@ describe('AuthorsServices', () => {
         };
         (axiosInstance.get as jest.Mock).mockResolvedValue(mockResponse);
 
-        const authors = await new AuthorsServices().fetchAuthors('test');
+        const authors = await new AuthorServices().fetchAuthors('test');
         expect(authors).toEqual([
             Authors.fromJson(mockResponse.data.docs[0]),
             Authors.fromJson(mockResponse.data.docs[1])
@@ -33,7 +33,7 @@ describe('AuthorsServices', () => {
         };
         (axiosInstance.get as jest.Mock).mockResolvedValue(mockResponse);
 
-        const authors = await new AuthorsServices().fetchAuthors('test', 2, 1);
+        const authors = await new AuthorServices().fetchAuthors('test', 2, 1);
         expect(authors).toEqual([
             Authors.fromJson(mockResponse.data.docs[0])
         ]);
@@ -56,7 +56,7 @@ describe('AuthorsServices', () => {
         };
         (axiosInstance.get as jest.Mock).mockResolvedValue(mockResponse);
 
-        const author = await new AuthorsServices().fetchAuthorDetail('OL23919A');
+        const author = await new AuthorServices().fetchAuthorDetail('OL23919A');
         expect(author).toEqual(Authors.fromDetailsJson(mockResponse.data));
     });
 });

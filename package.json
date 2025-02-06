@@ -9,6 +9,9 @@
     "lint": "eslint src",
     "test": "jest"
   },
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },

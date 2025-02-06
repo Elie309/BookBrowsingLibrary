@@ -4,7 +4,7 @@ import Author from '../entities/Author';
 /**
  * Service for fetching author data from an external API.
  */
-export default class AuthorsServices {
+export default class AuthorServices {
     /**
      * Fetches authors based on the search query with paging and sorting.
      * 

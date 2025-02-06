@@ -1,5 +1,9 @@
+import * as BookServices from './services/BookService';
+import * as AuthorServices from './services/AuthorServices';
+import * as Book from './entities/Book';
+import * as Author from './entities/Author';
 
-export * from "./entities/Book";
-export * from "./entities/Author";
-export * from "./services/AuthorsServices";
-export * from "./services/BookService";
+export { BookServices, AuthorServices, Book, Author };
+
+
+
