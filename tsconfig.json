@@ -2,11 +2,9 @@
     "compilerOptions": {
         "module": "ESNext", // or "ESNext" if using ES modules
         "moduleResolution": "Node",
-        "target": "ES6",
         "declaration": true,
         "outDir": "./dist",
         "rootDir": "./src",
-        "strict": true
     },
     "exclude": [
         "src/**/*.test.ts",
