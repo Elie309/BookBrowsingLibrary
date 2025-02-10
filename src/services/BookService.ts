@@ -1,5 +1,5 @@
 import axiosInstance from '../utils/axiosInstance';
-import  {Book} from '../entities/Book';
+import { Book } from '../entities/Book';
 
 /**
  * Service for fetching book data from an external API.
@@ -54,7 +54,7 @@ export class BookService {
                         };
                     })
                 );
-                book.authors.push(authorLinks[0].name);
+                book.authors = authorLinks.map(link => link.name);
             }
 
             // Fetch book cover

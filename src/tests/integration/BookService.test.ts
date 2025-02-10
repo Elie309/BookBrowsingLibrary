@@ -26,7 +26,7 @@ describe('BookService Integration Test', () => {
     });
 
     it('should fetch book details', async () => {
-        const book: Book | null = await BookService.fetchBookDetails('OL45804W');
+        const book: Book | null = await BookService.fetchBookDetails('OL82537W');
         expect(book).not.toBeNull();
         expect(book).toBeInstanceOf(Book);
     });

@@ -86,13 +86,20 @@ export class Book {
             json.key.split('/').pop(),
             json.title,
             '', // Cover URL is not provided in the detailed book data
-            [],// Author names are not provided in the detailed book data
+            json.authors, // Authors are fetched separately
             0, // Edition count is not provided in the detailed book data
             0, // First publish year is not provided in the detailed book data
             json.authors.map((author: any) => author.author.key.split('/').pop()), 
             false // Public scan is not provided in the detailed book data
         );
-        book.description = json.description;
+        
+        // Handle description field
+        if (typeof json.description === 'string') {
+            book.description = json.description;
+        } else if (json.description && typeof json.description === 'object') {
+            book.description = json.description.value;
+        }
+
         book.covers = json.covers;
         book.subject_places = json.subject_places;
         book.subjects = json.subjects;
