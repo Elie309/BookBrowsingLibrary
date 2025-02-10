@@ -13,7 +13,8 @@ export class Author {
     workCount: number;
     bio?: string;
     links?: { title: string, url: string }[];
-    photos?: number[];
+    photos: number[];
+    photosUrl: string[];
     remoteIds?: { [key: string]: string };
     created?: string;
 
@@ -46,9 +47,11 @@ export class Author {
         this.workCount = workCount;
         this.bio = bio;
         this.links = links;
-        this.photos = photos;
+        this.photos = photos || [];
         this.remoteIds = remoteIds;
         this.created = created;
+
+        this.photosUrl = [];
     }
 
     /**

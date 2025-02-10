@@ -1,6 +1,6 @@
-import {AuthorServices} from '../../services/AuthorServices';
+import { AuthorServices } from '../../services/AuthorServices';
 import axiosInstance from '../../utils/axiosInstance';
-import {Author} from '../../entities/Author';
+import { Author } from '../../entities/Author';
 
 jest.mock('../../utils/axiosInstance');
 
@@ -9,17 +9,17 @@ describe('AuthorsServices', () => {
         const mockResponse = {
             data: {
                 docs: [
-                    { key: '1', name: 'Author 1', birth_date: '1970-01-01', top_work: 'Work 1' },
-                    { key: '2', name: 'Author 2', birth_date: '1980-01-01', top_work: 'Work 2' }
+                    { key: '1', name: 'Author 1', birth_date: '1970-01-01', top_work: 'Work 1', photos: [5543033, -1] },
+                    { key: '2', name: 'Author 2', birth_date: '1980-01-01', top_work: 'Work 2', photos: [-1] }
                 ]
             }
         };
         (axiosInstance.get as jest.Mock).mockResolvedValue(mockResponse);
 
-        const authors = await new AuthorServices().fetchAuthors('test');
+        const authors = await AuthorServices.fetchAuthors('test');
         expect(authors).toEqual([
-            Author.fromJson(mockResponse.data.docs[0]),
-            Author.fromJson(mockResponse.data.docs[1])
+            { ...Author.fromJson(mockResponse.data.docs[0]), photosUrl: ['https://covers.openlibrary.org/a/olid/1-L.jpg'] },
+            { ...Author.fromJson(mockResponse.data.docs[1]), photosUrl: ['https://covers.openlibrary.org/a/olid/2-L.jpg'] }
         ]);
     });
 
@@ -27,15 +27,15 @@ describe('AuthorsServices', () => {
         const mockResponse = {
             data: {
                 docs: [
-                    { key: '3', name: 'Author 3', birth_date: '1990-01-01', top_work: 'Work 3' }
+                    { key: '3', name: 'Author 3', birth_date: '1990-01-01', top_work: 'Work 3', photos: [5543033, -1] }
                 ]
             }
         };
         (axiosInstance.get as jest.Mock).mockResolvedValue(mockResponse);
 
-        const authors = await new AuthorServices().fetchAuthors('test', 2, 1);
+        const authors = await AuthorServices.fetchAuthors('test', 2, 1);
         expect(authors).toEqual([
-            Author.fromJson(mockResponse.data.docs[0])
+            { ...Author.fromJson(mockResponse.data.docs[0]), photosUrl: ['https://covers.openlibrary.org/a/olid/3-L.jpg'] }
         ]);
     });
 
@@ -55,7 +55,10 @@ describe('AuthorsServices', () => {
         };
         (axiosInstance.get as jest.Mock).mockResolvedValue(mockResponse);
 
-        const author = await new AuthorServices().fetchAuthorDetail('OL23919A');
-        expect(author).toEqual(Author.fromDetailsJson(mockResponse.data));
+        const author = await AuthorServices.fetchAuthorDetail('OL23919A');
+        expect(author).toEqual({
+            ...Author.fromDetailsJson(mockResponse.data),
+            photosUrl: ['https://covers.openlibrary.org/b/id/5543033-L.jpg']
+        });
     });
 });

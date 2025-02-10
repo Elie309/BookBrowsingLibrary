@@ -1,5 +1,5 @@
 import axiosInstance from '../utils/axiosInstance';
-import {Author} from '../entities/Author';
+import { Author } from '../entities/Author';
 
 /**
  * Service for fetching author data from an external API.
@@ -27,8 +27,11 @@ export class AuthorServices {
             }
         });
         const data = response.data;
-        let authors = data.docs.map((author: any) => Author.fromJson(author));
-                
+        let authors = data.docs.map((author: any) => {
+            let authorObj = Author.fromJson(author);
+            authorObj.photosUrl.push(`https://covers.openlibrary.org/a/olid/${author.key}-L.jpg`);
+            return authorObj;
+        });
         return authors;
     }
 
@@ -41,7 +44,11 @@ export class AuthorServices {
     static async fetchAuthorDetail(key: string): Promise<Author | null> {
         try {
             const response = await axiosInstance.get(`/authors/${key}.json`);
-            return Author.fromDetailsJson(response.data);
+            let author = Author.fromDetailsJson(response.data);
+            if (response.data.photos && response.data.photos.length > 0 && response.data.photos[0] !== -1) {
+                author.photosUrl.push(`https://covers.openlibrary.org/b/id/${response.data.photos[0]}-L.jpg`);
+            }
+            return author;
         } catch (error) {
             return null;
         }
