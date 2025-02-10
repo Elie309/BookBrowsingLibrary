@@ -9,7 +9,7 @@ export class Book {
     publishYear?: number;
     editionCount: number;
     firstPublishYear: number;
-    authorKey: string[];
+    authorsKey: string[];
     publicScan: boolean;
     description?: string;
     covers?: number[];
@@ -41,8 +41,21 @@ export class Book {
         this.publishYear = publishYear;
         this.editionCount = editionCount;
         this.firstPublishYear = firstPublishYear;
-        this.authorKey = authorKey;
+        this.authorsKey = authorKey;
         this.publicScan = publicScan;
+
+
+
+        this.description = '';
+        this.covers = [];
+        this.subject_places = [];
+        this.subjects = [];
+        this.subject_people = [];
+        this.subject_times = [];
+        this.location = '';
+        this.created = '';
+
+
     }
 
     /**

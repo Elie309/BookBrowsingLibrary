@@ -33,15 +33,37 @@ export class BookService {
     }
 
     /**
-     * Fetches book details based on the book key.
+     * Fetches book details based on the book key and includes authors name and cover.
      * 
      * @param key - The key of the book.
-     * @returns A promise that resolves to a Book object.
+     * @returns A promise that resolves to a Book object with authors name and cover.
      */
     static async fetchBookDetails(key: string): Promise<Book | null> {
         try {
             const response = await axiosInstance.get(`/works/${key}.json`);
-            return Book.fromDetailsJson(response.data);
+            const book = Book.fromDetailsJson(response.data);
+
+            // Fetch authors name
+            book.authors = [];
+            if (book.authorsKey && book.authorsKey.length > 0) {
+                const authorLinks = await Promise.all(
+                    book.authorsKey.map(async (authorKey: any) => {
+                        const authorResponse = await axiosInstance.get(`/authors/${authorKey}.json`);
+                        return {
+                            name: authorResponse.data.name,
+                        };
+                    })
+                );
+                book.authors.push(authorLinks[0].name);
+            }
+
+            // Fetch book cover
+            if (response.data.covers && response.data.covers.length > 0) {
+                const coverId = response.data.covers[0];
+                book.cover = `https://covers.openlibrary.org/b/id/${coverId}-L.jpg`;
+            }
+
+            return book;
         } catch (error) {
             return null;
         }

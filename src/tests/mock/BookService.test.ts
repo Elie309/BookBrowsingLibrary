@@ -55,9 +55,20 @@ describe('BookService', () => {
                 created: { type: '/type/datetime', value: '2009-10-15T11:34:21.437031' }
             }
         };
-        (axiosInstance.get as jest.Mock).mockResolvedValue(mockResponse);
+        const mockAuthorResponse = {
+            data: {
+                name: 'Roald Dahl'
+            }
+        };
+        (axiosInstance.get as jest.Mock)
+            .mockResolvedValueOnce(mockResponse)
+            .mockResolvedValueOnce(mockAuthorResponse);
 
         const book = await BookService.fetchBookDetails('OL45804W');
-        expect(book).toEqual(Book.fromDetailsJson(mockResponse.data));
+        expect(book).toEqual({
+            ...Book.fromDetailsJson(mockResponse.data),
+            authors: ['Roald Dahl'],
+            cover: 'https://covers.openlibrary.org/b/id/6498519-L.jpg'
+        });
     });
 });
