@@ -14,7 +14,7 @@ export class AuthorServices {
      * @param sortBy - The field to sort by ('name' or 'birth_date').
      * @returns A promise that resolves to an array of Authors objects.
      */
-    async fetchAuthors(query: string, page: number = 1, limit: number = 10, 
+    static async fetchAuthors(query: string, page: number = 1, limit: number = 10, 
         sortBy?: 'name' | 'birth_date' ): Promise<Author[]> {
 
         const offset = (page - 1) * limit;
@@ -38,7 +38,7 @@ export class AuthorServices {
      * @param key - The key of the author.
      * @returns A promise that resolves to an Authors object.
      */
-    async fetchAuthorDetail(key: string): Promise<Author | null> {
+    static async fetchAuthorDetail(key: string): Promise<Author | null> {
         try {
             const response = await axiosInstance.get(`/authors/${key}.json`);
             return Author.fromDetailsJson(response.data);
