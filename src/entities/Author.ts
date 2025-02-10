@@ -95,6 +95,12 @@ export class Author {
             json.remote_ids,
             json.created?.value
         );
+
+        if (typeof json.bio === 'string') {
+            author.bio = json.bio;
+        } else if (json.bio && typeof json.bio === 'object') {
+            author.bio = json.description.value;
+        }
         return author;
     }
 }
