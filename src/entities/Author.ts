@@ -99,7 +99,7 @@ export class Author {
         if (typeof json.bio === 'string') {
             author.bio = json.bio;
         } else if (json.bio && typeof json.bio === 'object') {
-            author.bio = json.description.value;
+            author.bio = json.bio.value;
         }
         return author;
     }

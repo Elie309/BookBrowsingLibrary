@@ -25,7 +25,7 @@ describe('AuthorsServices Integration Test', () => {
     });
 
     it('should fetch author details', async () => {
-        const author: Author | null = await AuthorServices.fetchAuthorDetail('OL23919A');
+        const author: Author | null = await AuthorServices.fetchAuthorDetail('OL215910A');
         expect(author).not.toBeNull();
         expect(author).toBeInstanceOf(Author);
     });

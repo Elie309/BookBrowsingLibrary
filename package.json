@@ -1,6 +1,6 @@
 {
   "name": "@elie309/bookbrowsinglibrary",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "Library for browsing books, using openlibrary API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
