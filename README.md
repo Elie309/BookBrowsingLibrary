@@ -2,6 +2,8 @@
 
 A library for browsing and managing books. This project allows users to search, view, and organize their book collections.
 
+Using OPEN LIBRARY API - https://openlibrary.org/
+
 ## Installation
 
 To install the package, follow these steps:
